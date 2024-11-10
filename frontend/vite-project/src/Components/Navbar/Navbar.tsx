@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import AuthButton from "../Auth/AuthButton";
-import "./Navbar.css"; // Import the CSS file
+import "./Navbar.css";
 
 const Navbar = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav className="navbar">
       <ul className="navbar-container">
         <li className="navbar-item navbar-brand">
-          <a href="#">MyApp</a>
+          <a href="#">TeamTrackr</a>
         </li>
 
         <li className="navbar-item user-info">
