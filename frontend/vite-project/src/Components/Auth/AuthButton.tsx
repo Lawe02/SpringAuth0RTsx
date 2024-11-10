@@ -1,4 +1,3 @@
-import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const AuthButton = () => {
@@ -6,6 +5,8 @@ const AuthButton = () => {
 
   return isAuthenticated ? (
     <button
+      type="button"
+      className="btn btn-secondary"
       onClick={() =>
         logout({ logoutParams: { returnTo: window.location.origin } })
       }
@@ -13,7 +14,13 @@ const AuthButton = () => {
       Log Out
     </button>
   ) : (
-    <button onClick={() => loginWithRedirect()}>Log In</button>
+    <button
+      type="button"
+      className="btn btn-primary ml-auto"
+      onClick={() => loginWithRedirect()}
+    >
+      Log In
+    </button>
   );
 };
 

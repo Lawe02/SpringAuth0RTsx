@@ -1,7 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
-import AuthBtn from "./Components/Auth/LoginButton";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -14,6 +13,5 @@ root.render(
     }}
   >
     <App />
-    <AuthBtn></AuthBtn>
   </Auth0Provider>
 );
