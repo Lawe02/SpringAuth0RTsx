@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState } from "react";
+import "./PlayerList.css"; // Import the CSS file
 
 export default function PlayerList() {
   const { isAuthenticated } = useAuth0(); // Get isAuthenticated from Auth0
@@ -10,34 +11,29 @@ export default function PlayerList() {
     { id: 3, name: "Mark Johnson", position: "Defender" },
   ]);
 
-  //   useEffect(() => {
-  //     console.log(user);
-  //   });
-
   return isAuthenticated ? (
-    <div>
-      <h2>Player List</h2>
-      <ul>
+    <div className="player-list-container">
+      <h2 className="player-list-title">Player List</h2>
+      <ul className="player-list">
         {players.map((player) => (
-          <li key={player.id} style={{ marginBottom: "10px" }}>
-            <span>
-              {player.name} - {player.position}
-            </span>
-            <button style={{ marginLeft: "10px" }}>Update</button>
-            <button
-              style={{
-                marginLeft: "10px",
-                backgroundColor: "red",
-                color: "white",
-              }}
-            >
-              Delete
-            </button>
+          <li key={player.id} className="player-item">
+            <div className="player-info">
+              <span className="player-name">{player.name}</span>
+              <span className={`player-position ${player.position}`}>
+                {player.position}
+              </span>
+            </div>
+            <div className="player-actions">
+              <button className="update-btn">Update</button>
+              <button className="delete-btn">Delete</button>
+            </div>
           </li>
         ))}
       </ul>
     </div>
   ) : (
-    <div> U need to logged in</div>
+    <div className="unauthenticated-message">
+      You need to be logged in to manage players!
+    </div>
   );
 }
