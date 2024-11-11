@@ -6,19 +6,27 @@ export interface Player {
   position: string;
 }
 
-export interface Players {
-  players: Player[];
+export interface CreatePlayerRequest {
+  coachName: string;
+  name: string;
+  position: string;
 }
-const players: Players = {
-  players: [
-    { id: "1", name: "John Doe", position: "Forward" },
-    { id: "2", name: "Jane Smith", position: "Midfielder" },
-    { id: "3", name: "Mark Johnson", position: "Defender" },
-  ],
+
+export const fetchPlayers = async (name: string): Promise<Player[]> => {
+  const response = await axios.get<Player[]>(
+    `http://localhost:8080/api/coach/${name}/players`
+  );
+  console.log(response);
+  return response.data;
 };
 
-export const fetchPlayers = async (): Promise<Players> => {
-  const response = await axios.get<Players>("test");
-  response.data = players;
+export const createPlayer = async (
+  playerReq: CreatePlayerRequest
+): Promise<Player[]> => {
+  const response = await axios.post(
+    `http://localhost:8080/api/coach/players`,
+    playerReq
+  );
+  console.log(response);
   return response.data;
 };
